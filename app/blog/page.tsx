@@ -8,9 +8,9 @@ import Link from "next/link"
 export default function BlogPage() {
   const blogPosts = [
     {
-      title: "10 Essential Web Design Trends for 2024",
-      excerpt: "Discover the latest web design trends that will dominate 2024 and how to implement them in your projects.",
-      date: "March 15, 2024",
+      title: "10 Web Design Trends Every Small Business Should Know in 2026",
+      excerpt: "From AI-powered personalization to bold typography, here are the design trends helping local businesses stand out online this year.",
+      date: "February 10, 2026",
       readTime: "5 min read",
       category: "Design Trends",
       image: "/modern-web-design-2024.png"
@@ -18,23 +18,23 @@ export default function BlogPage() {
     {
       title: "The Complete Guide to E-commerce Website Development",
       excerpt: "Everything you need to know about building a successful e-commerce website that converts visitors into customers.",
-      date: "March 10, 2024",
+      date: "January 25, 2026",
       readTime: "8 min read",
       category: "E-commerce",
       image: "/ecommerce-development-guide.png"
     },
     {
       title: "Mobile-First Design: Why It Matters More Than Ever",
-      excerpt: "Learn why mobile-first design is crucial for modern websites and how to implement it effectively.",
-      date: "March 5, 2024",
+      excerpt: "Over 65% of web traffic now comes from mobile. Learn why mobile-first design is non-negotiable for your business.",
+      date: "January 15, 2026",
       readTime: "6 min read",
       category: "Mobile Design",
       image: "/placeholder-mqw9c.png"
     },
     {
-      title: "SEO Best Practices for Web Designers",
-      excerpt: "Essential SEO strategies that every web designer should know to create search-engine friendly websites.",
-      date: "February 28, 2024",
+      title: "Local SEO for Virginia Businesses: A Web Designer's Guide",
+      excerpt: "How the right website structure and content can help your Northern Virginia business rank higher on Google.",
+      date: "December 20, 2025",
       readTime: "7 min read",
       category: "SEO",
       image: "/seo-web-design.png"
@@ -42,7 +42,7 @@ export default function BlogPage() {
     {
       title: "How to Choose the Right Color Scheme for Your Website",
       excerpt: "A comprehensive guide to selecting colors that enhance user experience and reflect your brand identity.",
-      date: "February 20, 2024",
+      date: "December 5, 2025",
       readTime: "4 min read",
       category: "Design Tips",
       image: "/website-color-psychology.png"
@@ -50,7 +50,7 @@ export default function BlogPage() {
     {
       title: "Website Performance Optimization: Speed Up Your Site",
       excerpt: "Practical tips and techniques to improve your website's loading speed and overall performance.",
-      date: "February 15, 2024",
+      date: "November 18, 2025",
       readTime: "9 min read",
       category: "Performance",
       image: "/placeholder.svg?height=300&width=500"

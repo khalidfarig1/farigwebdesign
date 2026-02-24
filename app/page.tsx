@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Phone, Mail, CheckCircle, Globe, Smartphone, Search, ShoppingCart, Palette, Settings, Award, Clock, ArrowRight, Quote } from 'lucide-react'
+import { Phone, Mail, CheckCircle, Globe, Smartphone, Search, ShoppingCart, Palette, Settings, Award, Clock, ArrowRight, Quote, MapPin } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import CalendlyWidget from "@/components/calendly-widget"
+import HubSpotForm from "@/components/hubspot-form"
 
 export default function HomePage() {
   return (
@@ -46,15 +47,15 @@ export default function HomePage() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <Badge className="bg-navy-100 text-navy-800 hover:bg-navy-200">
-                  Professional Web Design Agency
+                  Northern Virginia's Web Design Expert
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-bold text-navy-900 leading-tight">
-                  Transform Your Business with 
-                  <span className="text-blue-600"> Professional</span> Web Design
+                  Web Design That Grows
+                  <span className="text-blue-600"> Local Businesses</span> in the DMV
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  I create stunning, responsive websites that drive results. From custom designs to e-commerce solutions, 
-                  I help businesses establish a powerful online presence that converts visitors into customers.
+                  I help restaurants, healthcare practices, and small businesses across Northern Virginia
+                  and the DC metro area get websites that actually bring in customers — not just look pretty.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -109,11 +110,11 @@ export default function HomePage() {
               Our Services
             </Badge>
             <h2 className="text-4xl font-bold text-navy-900 mb-4">
-              Comprehensive Web Design Solutions
+              Web Design Services for DMV Businesses
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From concept to launch, I provide end-to-end web design and development services 
-              that help your business succeed online.
+              From concept to launch, I provide end-to-end web design and development
+              for businesses across Northern Virginia, Washington DC, and Maryland.
             </p>
           </div>
           
@@ -445,8 +446,8 @@ export default function HomePage() {
                   <Badge variant="secondary">Restaurant</Badge>
                 </div>
                 <CardDescription className="text-gray-600 mb-4 leading-relaxed">
-                  A sophisticated culinary website featuring online reservations, menu showcase, 
-                  and event booking system. Increased online reservations by 150%.
+                  Built a custom reservation system and menu showcase for this local restaurant.
+                  Within 3 months of launch, online reservations increased by 150% compared to their previous site.
                 </CardDescription>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge variant="outline" className="text-xs">React</Badge>
@@ -484,8 +485,8 @@ export default function HomePage() {
                   <Badge variant="secondary">Fitness</Badge>
                 </div>
                 <CardDescription className="text-gray-600 mb-4 leading-relaxed">
-                  Dynamic fitness website with membership management, class scheduling, 
-                  and trainer profiles. Boosted membership sign-ups by 200%.
+                  Designed a membership portal with class scheduling and trainer profiles.
+                  The gym saw a 200% increase in online sign-ups within the first 6 months after launch.
                 </CardDescription>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge variant="outline" className="text-xs">Next.js</Badge>
@@ -523,8 +524,8 @@ export default function HomePage() {
                   <Badge variant="secondary">Photography</Badge>
                 </div>
                 <CardDescription className="text-gray-600 mb-4 leading-relaxed">
-                  Stunning photography portfolio with gallery management, client booking system, 
-                  and print ordering. Increased bookings by 180%.
+                  Created a visual portfolio with an integrated booking system and print ordering.
+                  Client bookings jumped 180% in the first quarter after the redesign went live.
                 </CardDescription>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge variant="outline" className="text-xs">Portfolio</Badge>
@@ -562,8 +563,8 @@ export default function HomePage() {
                   <Badge variant="secondary">Healthcare</Badge>
                 </div>
                 <CardDescription className="text-gray-600 mb-4 leading-relaxed">
-                  Professional dental practice website with appointment scheduling, service information, 
-                  and patient portal. Improved patient acquisition by 120%.
+                  Built an appointment scheduling system with a patient portal and service directory.
+                  New patient inquiries through the website increased by 120% over the following 4 months.
                 </CardDescription>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge variant="outline" className="text-xs">Healthcare</Badge>
@@ -596,17 +597,17 @@ export default function HomePage() {
                   About Khalid Farig
                 </Badge>
                 <h2 className="text-4xl font-bold text-navy-900 mb-6">
-                  Passionate Web Designer with 15+ Years of Experience
+                  15+ Years Building Websites for Virginia Businesses
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                  Hi, I'm Khalid Farig, a dedicated web designer and developer with over 15 years of experience 
-                  creating stunning, functional websites that drive business growth. I specialize in custom web design, 
-                  e-commerce development, and helping businesses establish a powerful online presence.
+                  Hi, I'm Khalid Farig, a web designer based in Northern Virginia with over 15 years of experience
+                  helping local businesses get online and grow. I've built websites for restaurants, dental practices,
+                  fitness centers, and photographers across the DMV area.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  My approach combines creative design with strategic thinking to deliver websites that not only 
-                  look amazing but also convert visitors into customers. I believe every business deserves a 
-                  website that truly represents their brand and achieves their goals.
+                  What sets me apart: I don't just make your website look good — I make sure it brings in
+                  customers. Every site I build is optimized for search engines, loads fast on mobile, and is
+                  designed to turn visitors into paying clients.
                 </p>
               </div>
               
@@ -709,92 +710,97 @@ export default function HomePage() {
             </p>
           </div>
 
+          {/* Contact Info Bar */}
+          <div className="grid md:grid-cols-4 gap-6 mb-16">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
+                <Phone className="h-6 w-6 text-blue-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-navy-900">Phone</div>
+                <div className="text-gray-600">(703) 843-8544</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center shrink-0">
+                <Mail className="h-6 w-6 text-green-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-navy-900">Email</div>
+                <div className="text-gray-600">contact@kfarig.com</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center shrink-0">
+                <MapPin className="h-6 w-6 text-purple-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-navy-900">Location</div>
+                <div className="text-gray-600">Northern Virginia, DMV Area</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shrink-0">
+                <Clock className="h-6 w-6 text-orange-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-navy-900">Hours</div>
+                <div className="text-gray-600">Mon - Fri: 9AM - 6PM EST</div>
+              </div>
+            </div>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
+            {/* Send a Message Form */}
             <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl text-navy-900">Schedule Your Free Consultation</CardTitle>
+                <CardTitle className="text-2xl text-navy-900">Send a Message</CardTitle>
                 <CardDescription>
-                  Book a 30-minute call to discuss your project and get a custom quote.
+                  Tell me about your project and I'll get back to you within 24 hours with a free quote.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <HubSpotForm />
+              </CardContent>
+            </Card>
+
+            {/* Schedule a Call */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl text-navy-900">Schedule a Free Call</CardTitle>
+                <CardDescription>
+                  Prefer to talk? Book a 30-minute consultation to discuss your project.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <CalendlyWidget />
               </CardContent>
             </Card>
+          </div>
 
-            {/* Contact Information */}
-            <div className="space-y-8">
+          {/* Why Choose Me */}
+          <div className="mt-16 bg-gray-50 p-8 rounded-2xl">
+            <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
-                <h3 className="text-2xl font-bold text-navy-900 mb-6">Contact Information</h3>
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                      <Phone className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-navy-900">Phone</div>
-                      <div className="text-gray-600">(703) 843-8544</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-green-600" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-navy-900">Email</div>
-                      <div className="text-gray-600">contact@kfarig.com</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-purple-600" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-navy-900">Business Hours</div>
-                      <div className="text-gray-600">Mon - Fri: 9AM - 6PM EST</div>
-                    </div>
-                  </div>
-                </div>
+                <CheckCircle className="h-8 w-8 text-green-500 mx-auto mb-2" />
+                <div className="font-semibold text-navy-900">Free Consultation</div>
+                <div className="text-sm text-gray-600">No obligation quote</div>
               </div>
-
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-navy-900 mb-3">Why Choose Me?</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span className="text-gray-700">Free consultation and quote</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span className="text-gray-700">24-hour response time</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span className="text-gray-700">100% satisfaction guarantee</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span className="text-gray-700">Ongoing support included</span>
-                  </li>
-                </ul>
+              <div>
+                <Clock className="h-8 w-8 text-blue-500 mx-auto mb-2" />
+                <div className="font-semibold text-navy-900">24-Hour Response</div>
+                <div className="text-sm text-gray-600">Fast turnaround</div>
               </div>
-
-              <Card className="bg-navy-600 text-white border-0">
-                <CardContent className="p-6 text-center">
-                  <h4 className="text-xl font-bold mb-2">Ready to Get Started?</h4>
-                  <p className="mb-4 opacity-90">
-                    Schedule a free consultation to discuss your project
-                  </p>
-                  <Button variant="secondary" className="bg-white text-navy-600 hover:bg-gray-100" asChild>
-                    <a href="https://calendly.com/khalidfarag87/30min" target="_blank" rel="noopener noreferrer">
-                      Schedule Consultation
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div>
+                <Award className="h-8 w-8 text-purple-500 mx-auto mb-2" />
+                <div className="font-semibold text-navy-900">100% Satisfaction</div>
+                <div className="text-sm text-gray-600">Guaranteed results</div>
+              </div>
+              <div>
+                <Settings className="h-8 w-8 text-orange-500 mx-auto mb-2" />
+                <div className="font-semibold text-navy-900">Ongoing Support</div>
+                <div className="text-sm text-gray-600">After launch care</div>
+              </div>
             </div>
           </div>
         </div>
@@ -815,8 +821,19 @@ export default function HomePage() {
                 />
               </div>
               <p className="text-gray-300 leading-relaxed">
-                Professional web design and development services that help businesses succeed online.
+                Professional web design and development services for businesses in Northern Virginia, Washington DC, and the DMV area.
               </p>
+              <div className="flex space-x-4 mt-4">
+                <a href="https://www.linkedin.com/in/khalidfarig" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/kfarigdesign" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/kfarigdesign" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+              </div>
             </div>
             
             <div>
@@ -844,6 +861,7 @@ export default function HomePage() {
               <div className="space-y-2 text-gray-300">
                 <div>(703) 843-8544</div>
                 <div>contact@kfarig.com</div>
+                <div>Northern Virginia, DMV Area</div>
                 <div>Mon - Fri: 9AM - 6PM EST</div>
               </div>
             </div>
