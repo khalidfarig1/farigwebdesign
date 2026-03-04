@@ -90,3 +90,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide HubSpot branding */
+.hs-form__virality-link {
+  display: none !important;
+}
+.hubspot-link__container {
+  display: none !important;
+}
