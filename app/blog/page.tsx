@@ -1,61 +1,16 @@
+import { getPublishedPosts } from "@/lib/notion"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, ArrowRight, User } from 'lucide-react'
+import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
+import { format } from 'date-fns'
 
-export default function BlogPage() {
-  const blogPosts = [
-    {
-      title: "10 Web Design Trends Every Small Business Should Know in 2026",
-      excerpt: "From AI-powered personalization to bold typography, here are the design trends helping local businesses stand out online this year.",
-      date: "February 10, 2026",
-      readTime: "5 min read",
-      category: "Design Trends",
-      image: "/modern-web-design-2024.png"
-    },
-    {
-      title: "The Complete Guide to E-commerce Website Development",
-      excerpt: "Everything you need to know about building a successful e-commerce website that converts visitors into customers.",
-      date: "January 25, 2026",
-      readTime: "8 min read",
-      category: "E-commerce",
-      image: "/ecommerce-development-guide.png"
-    },
-    {
-      title: "Mobile-First Design: Why It Matters More Than Ever",
-      excerpt: "Over 65% of web traffic now comes from mobile. Learn why mobile-first design is non-negotiable for your business.",
-      date: "January 15, 2026",
-      readTime: "6 min read",
-      category: "Mobile Design",
-      image: "/placeholder-mqw9c.png"
-    },
-    {
-      title: "Local SEO for Virginia Businesses: A Web Designer's Guide",
-      excerpt: "How the right website structure and content can help your Northern Virginia business rank higher on Google.",
-      date: "December 20, 2025",
-      readTime: "7 min read",
-      category: "SEO",
-      image: "/seo-web-design.png"
-    },
-    {
-      title: "How to Choose the Right Color Scheme for Your Website",
-      excerpt: "A comprehensive guide to selecting colors that enhance user experience and reflect your brand identity.",
-      date: "December 5, 2025",
-      readTime: "4 min read",
-      category: "Design Tips",
-      image: "/website-color-psychology.png"
-    },
-    {
-      title: "Website Performance Optimization: Speed Up Your Site",
-      excerpt: "Practical tips and techniques to improve your website's loading speed and overall performance.",
-      date: "November 18, 2025",
-      readTime: "9 min read",
-      category: "Performance",
-      image: "/placeholder.svg?height=300&width=500"
-    }
-  ]
+export const revalidate = 3600
+
+export default async function BlogPage() {
+  const posts = await getPublishedPosts()
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -70,7 +25,7 @@ export default function BlogPage() {
               Web Design Tips & Insights
             </h1>
             <p className="text-xl text-gray-600">
-              Stay updated with the latest web design trends, tips, and best practices 
+              Stay updated with the latest web design trends, tips, and best practices
               to create better websites and grow your business online.
             </p>
           </div>
@@ -80,48 +35,56 @@ export default function BlogPage() {
       {/* Blog Posts */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    width={500}
-                    height={300}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge variant="secondary" className="bg-white/90 text-navy-800">
-                      {post.category}
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{post.date}</span>
+          {posts.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-gray-500">No blog posts yet. Check back soon!</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post) => (
+                <Link key={post.id} href={`/blog/${post.slug}`}>
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden h-full">
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={post.coverImage}
+                        alt={post.title}
+                        width={500}
+                        height={300}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge variant="secondary" className="bg-white/90 text-navy-800">
+                          {post.category}
+                        </Badge>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="h-4 w-4" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                  <CardTitle className="text-xl text-navy-900 mb-3 group-hover:text-blue-600 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 mb-4 leading-relaxed">
-                    {post.excerpt}
-                  </CardDescription>
-                  <Button variant="outline" className="w-full group-hover:bg-navy-600 group-hover:text-white transition-colors">
-                    Read More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                    <CardContent className="p-6">
+                      <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                        <div className="flex items-center space-x-1">
+                          <Calendar className="h-4 w-4" />
+                          <span>{post.date ? format(new Date(post.date), 'MMMM d, yyyy') : ''}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Clock className="h-4 w-4" />
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                      <CardTitle className="text-xl text-navy-900 mb-3 group-hover:text-blue-600 transition-colors">
+                        {post.title}
+                      </CardTitle>
+                      <CardDescription className="text-gray-600 mb-4 leading-relaxed">
+                        {post.excerpt}
+                      </CardDescription>
+                      <Button variant="outline" className="w-full group-hover:bg-navy-600 group-hover:text-white transition-colors">
+                        Read More
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
